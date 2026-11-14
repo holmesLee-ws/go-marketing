@@ -16,6 +16,7 @@ const FIELDS = ["선수", "핵심 질문", "목표", "만들어 볼 것", "국�
 function parseCurriculum(text) {
   const modules = new Map();
   const domestic = new Map();
+  const global = new Map();
   const problems = [];
   const blocks = text.split(/^### /m).slice(1);
   for (const block of blocks) {
@@ -34,6 +35,7 @@ function parseCurriculum(text) {
     const prereq = !fields["선수"] || fields["선수"] === "없음" ? [] : fields["선수"].split(",").map((s) => s.trim());
     modules.set(id, prereq);
     domestic.set(id, fields["국내 근거"] || "");
+    global.set(id, fields["글로벌 비교"] || "");
   }
   for (const [id, prereq] of modules) for (const p of prereq) if (!modules.has(p)) problems.push(`${id}: 없는 선수 ${p}`);
   const state = new Map();
@@ -45,7 +47,7 @@ function parseCurriculum(text) {
     state.set(id, 2);
   };
   for (const id of modules.keys()) visit(id, []);
-  return { modules, domestic, problems };
+  return { modules, domestic, global, problems };
 }
 
 
@@ -65,7 +67,7 @@ function checkDomestic(domestic, sources) {
   const problems = [];
   const names = [...sources.keys()].sort((a, b) => b.length - a.length);
   for (const [id, line] of domestic) {
-    if (/^해당 없음 — /.test(line)) continue;
+    if (/^해당 없음/.test(line) && !/^해당 없음 — .{8,}/.test(line)) problems.push(`${id}: 국내 근거 「해당 없음」의 이유가 없거나 짧음`);
     // 법령명 위치를 찾는다(긴 이름 우선, 겹침 제외)
     const hits = [];
     for (const n of names) {
@@ -82,16 +84,37 @@ function checkDomestic(domestic, sources) {
     const bare = line.replace(/\([^)]*\)/g, "");
     for (const seg of bare.split(/,|—|·(?= )/)) {
       const name = seg.split(/ 제\d/)[0].replace(/[「」]/g, "").trim();
-      if (!/(법률|[가-힣]{2,}법|시행령|심사지침|실시요령|안내서|가이드라인|고시)$/.test(name)) continue;
+      if (!/(법률|[가-힣]{2,}법|시행령|심사지침|실시요령|안내서|가이드라인|고시|제도|규칙|기준|지침)$/.test(name)) continue;
       if (!names.some((n) => n === name || name.endsWith(" " + n) || n.startsWith(name + "("))) problems.push(`${id}: 법령·기준명 「${name}」이 sources.md에 없음`);
     }
   }
   return problems;
 }
 
+// 글로벌 비교 줄의 식별자(CFR·U.S.C.·EU 문서 번호·조항·기관명)가 sources.md 글로벌 표에 있는지 본다
+const GLOBAL_KEYS = [/\d+ CFR (?:Part |§)?\d+(?:\.\d+)?/g, /\d+ U\.S\.C\. \d+/g, /(?:\(EU\) )?\d{4}\/\d+(?:\/EC|\/EU)?/g, /§1798\.\d+/g,
+  /\b(?:GDPR|ePrivacy|DSA|CCPA|TCPA|CAN-SPAM|ICC|ESOMAR|WIPO|AMA|FTC Act|EDPB)\b/g];
+function checkGlobal(global, sourcesText) {
+  const problems = [];
+  const table = sourcesText.split("## 글로벌")[1] || "";
+  for (const [id, line] of global) {
+    if (/^해당 없음/.test(line)) { if (!/^해당 없음 — .{8,}/.test(line)) problems.push(`${id}: 글로벌 비교 「해당 없음」의 이유가 없거나 짧음`); continue; }
+    for (const re of GLOBAL_KEYS) for (const m of line.matchAll(re)) {
+      const key = m[0].replace(/^\(EU\) /, "").replace(/§(\d+)\.\d+$/, "Part $1");
+      const k2 = key.replace(/ Part /, " §").replace(/ §/, " Part ");
+      if (!table.includes(key) && !table.includes(k2) && !table.includes(m[0])) problems.push(`${id}: 글로벌 근거 「${m[0]}」이 sources.md 글로벌 표에 없음`);
+    }
+  }
+  return problems;
+}
+
+function checkGraduation(text) {
+  const need = ["X1", "learner/projects/", "① 타깃", "② 포지셔닝", "③", "④ 채널", "⑤ 측정", "⑥ 가격", "국내 근거", "URL", "조회일", "진출 예정 시장"];
+  return need.filter((n) => !text.includes(n)).map((n) => `tutor/assessment.md 졸업 산출물 기준에 「${n}」 없음`);
+}
+
 function findVisualAssets(files) {
-  const allowedJs = /^tools\/.*\.m?js$/;
-  return files.filter((f) => /\.(html?|css|svg|png|jpe?g|gif|webp|avif)$/i.test(f) || (/\.m?js$/i.test(f) && !allowedJs.test(f)));
+  return files.filter((f) => /\.(x?html?|css|svgz?|png|jpe?g|gif|webp|avif|ico|bmp|pdf)$/i.test(f) || (/\.(m?js|cjs|jsx|tsx?)$/i.test(f) && f !== "tools/check.mjs"));
 }
 
 function findTemplateMarkup(name, text) {
@@ -101,11 +124,14 @@ function findTemplateMarkup(name, text) {
 }
 
 function main() {
-  const { modules, domestic, problems } = parseCurriculum(read("curriculum/map.md"));
+  const { modules, domestic, global, problems } = parseCurriculum(read("curriculum/map.md"));
   errors.push(...problems);
   if (!existsSync(join(root, "docs/build/sources.md"))) errors.push("docs/build/sources.md 없음");
-  else errors.push(...checkDomestic(domestic, parseSources(read("docs/build/sources.md"))));
-  if (!/X1[\s\S]*졸업 산출물/.test(read("tutor/assessment.md")) && !/졸업 산출물/.test(read("tutor/assessment.md"))) errors.push("tutor/assessment.md에 졸업 산출물 판정 기준 없음");
+  else {
+    const src = read("docs/build/sources.md");
+    errors.push(...checkDomestic(domestic, parseSources(src)), ...checkGlobal(global, src));
+  }
+  errors.push(...checkGraduation(read("tutor/assessment.md")));
   if (modules.size === 0) errors.push("모듈을 찾지 못함");
 
   const files = execFileSync("git", ["ls-files", "--cached", "--others", "--exclude-standard", "-z"], { cwd: root, encoding: "utf8" }).split("\0").filter(Boolean);

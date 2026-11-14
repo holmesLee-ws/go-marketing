@@ -73,7 +73,10 @@ go-* 시리즈 공통 척도다(ACM·IEEE-CS CS2023의 숙련 수준에서 빌�
 }
 ```
 
-`status`는 `estimated`, `inferred`, `in_progress`, `done`, `verified_skip`, `self_skip` 중 하나다. `inferred`는 상위 모듈을 통과해 추론한 것으로 다시 탐침하지 않는다.
+`status`는 `estimated`, `inferred`, `in_progress`, `done`, `verified_skip`, `self_skip` 중 하나다. `estimated`의 `level`은 입구 진단 문제가 보여 준 수준(대개 1)이다.
+
+- `current.path`는 `probe`(탐침 중), `skip`, `gap`(빈틈만), `full`(전체) 중 하나다.
+- `gaps`의 항목은 `{"module": "L3", "gap": "야간 전송 별도 동의를 모름", "at": "2026-11-14"}` 형식이다. 메우면 `"closed": "YYYY-MM-DD"`를 더한다. `inferred`는 상위 모듈을 통과해 추론한 것으로 다시 탐침하지 않는다.
 
 출제와 채점을 튜터 혼자 하므로, `evidence`에는 판단만 적지 않고 **학습자의 답을 짧게 인용한다.** 따옴표 안은 대화에서 그대로 복사한다. 구절을 잇거나 조사·어미를 바꾸지 않고, 줄일 때는 `…`를 쓴다. 바꿔 쓰려면 따옴표 밖 요약으로 쓴다.
 

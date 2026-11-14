@@ -30,7 +30,7 @@
 4. **국내 근거와 글로벌 비교**: 모듈의 「국내 근거」가 해당 없음이 아니면, 학습자의 장면에 그 법이 어떻게 걸리는지 판단하게 한다(법규 근거 규칙대로 먼저 조회). 그다음 「글로벌 비교」의 차이 하나를 묻는다. 해외 진출 계획이 없는 학습자면 비교는 한 차례로 끝낸다.
 5. **마무리**: 목표 수준에 맞는 증거를 얻는다. Explain은 자기 말로 설명, Apply는 새 장면에서 직접 수행, Evaluate는 선택지를 비교해 근거와 함께 결정, Develop은 만들어 낸 업무 문서로 본다. `curriculum/map.md`의 「만들어 볼 것」은 예시다. 학습자의 업무에 더 맞는 산출물이 있으면 바꾼다. 산출물은 `learner/projects/`에 마크다운으로 둔다.
 6. **기록**: `state.json`을 고치고 `log.md`에 한 줄을 더한다.
-7. **다음 모듈**: `curriculum/map.md`의 선수 관계와 `state.json`을 대조한다. 아직 `done`, `verified_skip`, `self_skip`, `inferred`가 아닌 모듈 중에서, 선수가 모두 `done`, `verified_skip`, `self_skip`, `estimated`, `inferred`인 것을 고른다. 기본 순서(M → G → B → P → L → X)상 가장 앞선 것을 추천하되, 학습자의 목표에 더 가까운 것이 있으면 이유를 말하고 함께 제시한다. 학습자가 선수가 비어 있는 모듈을 고르면 그대로 시작하되, 비어 있는 선수를 `self_skip`으로 적고 시작할 때 그 핵심을 탐침 1개로 확인한다.
+7. **다음 모듈**: `curriculum/map.md`의 선수 관계와 `state.json`을 대조한다. 아직 `done`, `verified_skip`, `self_skip`, `inferred`가 아닌 모듈 중에서, 선수가 모두 `done`, `verified_skip`, `self_skip`, `estimated`, `inferred`인 것을 고른다. 기본 순서(M → G → B → P → L → X)상 가장 앞선 것을 추천하되, 학습자의 목표에 더 가까운 것이 있으면 이유를 말하고 함께 제시한다. 학습자가 선수가 비어 있는 모듈을 고르면 그대로 시작하되, 비어 있는 선수를 `self_skip`으로 적고 시작할 때 그 핵심을 탐침 1개로 확인한다. 확인 탐침의 결과는 그 선수 모듈의 `evidence`에 적고, 맞으면 `status`를 `estimated`로 바꾼다.
 
 ## 학습자의 실제 자료
 
@@ -49,7 +49,7 @@
 
 - 모듈이 끝날 때, 페이스 판단이 바뀔 때, 세션을 마칠 때 `state.json`을 **그 차례 안에** 고친다. 나중으로 미루지 않는다.
 - 오답이나 힌트 의존이 나오면 그 차례에 `gaps`에 적고 페이스 표에 따라 `pace`를 고친다. 판단이 일부만 틀린 경우도 오답이다.
-- 모듈을 시작하면 `current.module`과 `current.path`(`probe`·`skip`·`gap`·`full`)를 적는다. 탐침을 내면 `current.pending_probe`에 문제를 적고, 답을 받으면 `null`로 되돌린다.
-- 기록 중이라는 말(「빈틈으로 적었어요」 등)을 학습자에게 하지 않는다.
+- 모듈을 시작하면 `current.module`과 `current.path`(`probe`·`skip`·`gap`·`full`)를 적는다. `gap`은 그 모듈의 `gaps` 항목이 있을 때만 쓴다. `level`은 판정이 끝난 뒤에 적는다. 탐침을 내면 `current.pending_probe`에 문제를 적고, 답을 받으면 `null`로 되돌린다.
+- 기록 중이라는 말(「빈틈으로 적었어요」「빈틈으로 둘게요」「지도에 넣을게요」 등)을 학습자에게 하지 않는다.
 - `learner/` 파일은 Write·Edit로만 고친다. Bash나 스크립트로 고치지 않는다.
 - 진도를 물으면 `state.json`을 근거로 답한다. 기억으로 답하지 않는다.

@@ -11,13 +11,13 @@
 |---|---|---|---|
 | 소비자기본법 | 제4조(소비자의 기본적 권리) — 시행 2026. 9. 11. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=283837&chrClsCd=010202&urlMode=lsInfoP&efYd=20260911&ancYnChk=0 | 2026-11-14 |
 | 개인정보 보호법 | 제15조(개인정보의 수집ㆍ이용), 제22조(동의를 받는 방법), 제23조(민감정보의 처리 제한) — 시행 2026. 9. 11. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=283839&chrClsCd=010202&urlMode=lsInfoP&efYd=20260911&ancYnChk=0 | 2026-11-14 |
-| 표시·광고의 공정화에 관한 법률 | 제3조(부당한 표시ㆍ광고 행위의 금지), 제5조(표시ㆍ광고 내용의 실증 등) — 시행 2025. 1. 21. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=268659&chrClsCd=010202&urlMode=lsInfoP&efYd=20250121&ancYnChk=0 | 2026-11-14 |
+| 표시·광고의 공정화에 관한 법률 | 제3조(부당한 표시ㆍ광고 행위의 금지 — 제1항 제3호 「부당하게 비교하는 표시ㆍ광고」 확인), 제5조(표시ㆍ광고 내용의 실증 등) — 시행 2025. 1. 21. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=268659&chrClsCd=010202&urlMode=lsInfoP&efYd=20250121&ancYnChk=0 | 2026-11-14 |
 | 물가안정에 관한 법률 | 제3조(가격의 표시) — 시행 2026. 1. 2. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=276105&chrClsCd=010202&urlMode=lsInfoP&efYd=20260102&ancYnChk=0 | 2026-11-14 |
 | 전자상거래 등에서의 소비자보호에 관한 법률 | 제13조(신원 및 거래조건에 대한 정보의 제공), 제17조(청약철회등), 제21조(금지행위), 제21조의2(온라인 인터페이스 운영에 있어서 금지되는 행위) — 시행 2026. 7. 21. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=282793&chrClsCd=010202&urlMode=lsInfoP&efYd=20260721&ancYnChk=0 | 2026-11-14 |
 | 정보통신망 이용촉진 및 정보보호 등에 관한 법률 | 제50조(영리목적의 광고성 정보 전송 제한) — 시행 2026. 10. 2. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=290001&chrClsCd=010202&urlMode=lsInfoP&efYd=20261002&ancYnChk=0 | 2026-11-14 |
 | 정보통신망 이용촉진 및 정보보호 등에 관한 법률 시행령 | 제61조(영리목적의 광고성 정보 전송기준), 제62조의3(수신동의 여부의 확인) — 시행 2026. 10. 2. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=290483&chrClsCd=010202&urlMode=lsInfoP&efYd=20261002&ancYnChk=0 | 2026-11-14 |
 | 상표법 | 제33조(상표등록의 요건), 제34조(상표등록을 받을 수 없는 상표) — 시행 2025. 11. 11. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=279819&chrClsCd=010202&urlMode=lsInfoP&efYd=20251111&ancYnChk=0 | 2026-11-14 |
-| 부정경쟁방지 및 영업비밀보호에 관한 법률 | 제2조(정의) — 시행 2026. 5. 28. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=277201&chrClsCd=010202&urlMode=lsInfoP&efYd=20260528&ancYnChk=0 | 2026-11-14 |
+| 부정경쟁방지 및 영업비밀보호에 관한 법률 | 제2조(정의 — 제1호 「부정경쟁행위」 확인) — 시행 2026. 5. 28. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=277201&chrClsCd=010202&urlMode=lsInfoP&efYd=20260528&ancYnChk=0 | 2026-11-14 |
 | 독점규제 및 공정거래에 관한 법률 | 제45조(불공정거래행위의 금지), 제46조(재판매가격유지행위의 금지), 제120조의2(공정거래 자율준수 문화의 확산) — 시행 2026. 10. 2. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=290153&chrClsCd=010202&urlMode=lsInfoP&efYd=20261002&ancYnChk=0 | 2026-11-14 |
 | 약관의 규제에 관한 법률 | 제6조(일반원칙) — 시행 2024. 8. 7. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=260021&chrClsCd=010202&urlMode=lsInfoP&efYd=20240807&ancYnChk=0 | 2026-11-14 |
 | 대리점거래의 공정화에 관한 법률 | 법령 존재·시행일 확인(조문 인용 없음) — 시행 2026. 10. 2. | https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=288603&chrClsCd=010202&urlMode=lsInfoP&efYd=20261002&ancYnChk=0 | 2026-11-14 |
@@ -30,12 +30,12 @@
 
 | 법령·기준명 | 확인한 조문 | URL | 조회일 |
 |---|---|---|---|
-| 비교표시·광고에 관한 심사지침 | 행정규칙 존재 확인(공정위) | https://www.law.go.kr/행정규칙/비교표시·광고에관한심사지침 | 2026-11-14 |
-| 불공정거래행위 심사지침 | 행정규칙 존재 확인(공정위) | https://www.law.go.kr/행정규칙/불공정거래행위심사지침 | 2026-11-14 |
-| 부당한 표시·광고행위의 유형 및 기준 지정고시 | 행정규칙 존재 확인(공정위) | https://www.law.go.kr/행정규칙/부당한표시·광고행위의유형및기준지정고시 | 2026-11-14 |
+| 비교표시·광고에 관한 심사지침 | [시행 2016. 12. 23.] 공정거래위원회예규 제269호 | https://www.law.go.kr/LSW/admRulInfoR.do?admRulSeq=2100000070474 | 2026-11-14 |
+| 불공정거래행위 심사지침 | [시행 2024. 12. 30.] 공정거래위원회예규 제477호 | https://www.law.go.kr/LSW/admRulInfoR.do?admRulSeq=2100000251702 | 2026-11-14 |
+| 부당한 표시·광고행위의 유형 및 기준 지정고시 | [시행 2019. 12. 12.] 공정거래위원회고시 제2019-11호 | https://www.law.go.kr/LSW/admRulInfoR.do?admRulSeq=2100000184414 | 2026-11-14 |
 | 가격표시제 실시요령 | 산업통상부 고시. 물가안정법·소비자기본법 근거, 2025년 개정(단위가격 표시 품목 확대·대규모 온라인쇼핑몰 적용) | https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/170369/view | 2026-11-14 |
 | 공정거래 자율준수 프로그램 제도 | 독점규제 및 공정거래에 관한 법률 제120조의2(공정거래 자율준수 문화의 확산)가 근거 | https://www.law.go.kr/법령/독점규제및공정거래에관한법률 | 2026-11-14 |
-| 추천·보증 등에 관한 표시·광고 심사지침 | 2024-12-01 시행 개정: 문자 매체는 경제적 이해관계를 제목 또는 첫 부분에 표시, 미래·조건부 대가 포함. 2026-06-01 시행 개정: AI 가상인물 추천은 가상임을 표시 | https://www.ftc.go.kr/www/selectBbsNttView.do?key=12&bordCd=3&nttSn=47547 | 2026-11-14 |
+| 추천·보증 등에 관한 표시·광고 심사지침 | 국가법령정보센터 판: [시행 2026. 6. 1.] 공정거래위원회예규 제499호(https://www.law.go.kr/LSW/admRulInfoR.do?admRulSeq=2100000280130). 2024-12-01 시행 개정: 문자 매체는 경제적 이해관계를 제목 또는 첫 부분에 표시, 미래·조건부 대가 포함. 2026-06-01 시행 개정: AI 가상인물 추천은 가상임을 표시 | https://www.ftc.go.kr/www/selectBbsNttView.do?key=12&bordCd=3&nttSn=47547 | 2026-11-14 |
 | 추천·보증 등에 관한 표시·광고 심사지침 2024 개정 예고 | 2024-12-01 시행 개정안 | https://www.ftc.go.kr/www/selectBbsNttView.do?key=12&bordCd=3&nttSn=43669 | 2026-11-14 |
 | 경제적 이해관계 표시 안내서 | 2025-12-02 개정본 배포 | https://www.ftc.go.kr/www/selectBbsNttView.do?key=12&bordCd=3&nttSn=46709 | 2026-11-14 |
 | 전자상거래법 시행령·시행규칙 개정(다크패턴) | 2025-02-14 시행. 숨은갱신(법 제13조 제6항), 순차공개가격책정·특정옵션사전선택·잘못된 계층구조·취소탈퇴방해·반복간섭(법 제21조의2 제1항) | https://www.ftc.go.kr/www/selectBbsNttView.do?key=12&bordCd=3&nttSn=43795 | 2026-11-14 |

@@ -67,9 +67,9 @@
 
 - `https://www.law.go.kr/법령/<법령명>/<조문>`은 페이지 틀만 오고 조문 본문은 스크립트로 따로 불러온다. `claude -p`의 WebFetch로 열면 본문도 판 번호(`lsiSeq`)·시행일(`efYd`)도 보이지 않았다.
 - 본문 직접 주소 `https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=<판>&chrClsCd=010202&urlMode=lsInfoP&efYd=<시행일>&ancYnChk=0`은 WebFetch로 읽혔다(정보통신망법 제50조 제3항 원문과 `[시행 2026. 10. 2.] [법률 제21988호]` 확인). 다만 WebFetch는 앞 10만 자까지만 읽어 긴 법률의 뒤쪽 조문은 빠질 수 있다.
-- 그래서 sources.md 「국내 법령」 표에 본문 직접 주소를 두고, 튜터 지침(`tutor/legal-sources.md` 규칙 3)에 「본문 주소로 읽기 → 이후 개정 WebSearch 확인 → 잘리거나 못 읽으면 소관 기관 자료」 순서를 넣었다. 개정되면 판 번호가 바뀌므로 sources.md를 다시 실측해야 한다.
+- 그래서 sources.md 「국내 법령」 표에 본문 직접 주소를 두고, 튜터 지침(`tutor/legal-sources.md` 규칙 4)에 「본문 주소로 읽기 → 이후 개정 WebSearch 확인 → 잘리거나 못 읽으면 소관 기관 자료」 순서를 넣었다. 개정되면 판 번호가 바뀌므로 sources.md를 다시 실측해야 한다.
 
-**진행 조건**(충족, 2026-11-14 21:1x): G0는 이 실측을 적어야 닫힌다. 지도의 국내 조문은 `docs/build/sources.md`에 확인 행이 생기기 전까지 미확인이며, `tools/check.mjs`가 sources.md 대조로 실패시킨다. 이 검사 통과가 G1의 합격 조건이다. 고시·심사지침·실시요령·안내서 같은 행정규칙도 같은 표로 대조한다.
+**진행 조건**(충족, 2026-11-14 21:19): G0는 이 실측을 적어야 닫힌다. 지도의 국내 조문은 `docs/build/sources.md`에 확인 행이 생기기 전까지 미확인이며, `tools/check.mjs`가 sources.md 대조로 실패시킨다. 이 검사 통과가 G1의 합격 조건이다. 고시·심사지침·실시요령·안내서 같은 행정규칙도 같은 표로 대조한다.
 
 ## 구조 결정
 

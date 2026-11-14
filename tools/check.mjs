@@ -92,24 +92,35 @@ function checkDomestic(domestic, sources) {
 }
 
 // 글로벌 비교 줄의 식별자(CFR·U.S.C.·EU 문서 번호·조항·기관명)가 sources.md 글로벌 표에 있는지 본다
-const GLOBAL_KEYS = [/\d+ CFR (?:Part |§)?\d+(?:\.\d+)?/g, /\d+ U\.S\.C\. \d+/g, /(?:\(EU\) )?\d{4}\/\d+(?:\/EC|\/EU)?/g, /§1798\.\d+/g,
+const GLOBAL_KEYS = [/\d+ CFR (?:Part |§)?\d+(?:\.\d+)?/g, /\d+ U\.S\.C\. \d+/g, /(?:\(EU\) )?\d{2,4}\/\d+(?:\/EC|\/EU)?/g, /§1798\.\d+/g,
   /\b(?:GDPR|ePrivacy|DSA|CCPA|TCPA|CAN-SPAM|ICC|ESOMAR|WIPO|AMA|FTC Act|EDPB)\b/g];
 function checkGlobal(global, sourcesText) {
   const problems = [];
-  const table = sourcesText.split("## 글로벌")[1] || "";
+  const rows = (sourcesText.split("## 글로벌")[1] || "").split("\n").filter((l) => /\| https?:\/\/\S+ \| \d{4}-\d{2}-\d{2} \|/.test(l));
   for (const [id, line] of global) {
     if (/^해당 없음/.test(line)) { if (!/^해당 없음 — .{8,}/.test(line)) problems.push(`${id}: 글로벌 비교 「해당 없음」의 이유가 없거나 짧음`); continue; }
+    const found = [];
     for (const re of GLOBAL_KEYS) for (const m of line.matchAll(re)) {
       const key = m[0].replace(/^\(EU\) /, "").replace(/§(\d+)\.\d+$/, "Part $1");
-      const k2 = key.replace(/ Part /, " §").replace(/ §/, " Part ");
-      if (!table.includes(key) && !table.includes(k2) && !table.includes(m[0])) problems.push(`${id}: 글로벌 근거 「${m[0]}」이 sources.md 글로벌 표에 없음`);
+      const alts = [m[0], key, key.replace(/ Part /, " §"), key.replace(/ §/, " Part ")];
+      const hit = rows.filter((r) => alts.some((a) => r.includes(a)));
+      if (!hit.length) problems.push(`${id}: 글로벌 근거 「${m[0]}」이 sources.md 글로벌 표에 없음`);
+      found.push({ at: m.index, rows: hit });
+    }
+    if (!found.length) problems.push(`${id}: 글로벌 비교에 대조할 식별자가 없음(문서 번호·기관명을 적거나 「해당 없음 — 이유」)`);
+    found.sort((a, b) => a.at - b.at);
+    for (const m of line.matchAll(/제(\d+)a?조/g)) {
+      const owner = found.filter((f) => f.at < m.index).pop();
+      const n = m[0].replace(/^제|조$/g, "");
+      if (owner && owner.rows.length && !owner.rows.some((r) => new RegExp(`Art\\. ${n}\\b`).test(r))) problems.push(`${id}: 글로벌 조항 ${m[0]}이 sources.md 해당 행에 없음`);
     }
   }
   return problems;
 }
 
-function checkGraduation(text) {
-  const need = ["X1", "learner/projects/", "① 타깃", "② 포지셔닝", "③", "④ 채널", "⑤ 측정", "⑥ 가격", "국내 근거", "URL", "조회일", "진출 예정 시장"];
+function checkGraduation(full) {
+  const text = (full.split("## 졸업 산출물")[1] || "").split("\n## ")[0];
+  const need = ["learner/projects/", "① 타깃", "② 포지셔닝", "③ 4P", "④ 채널", "⑤ 측정", "⑥ 가격", "국내 근거", "URL", "조회일", "진출 예정 시장"];
   return need.filter((n) => !text.includes(n)).map((n) => `tutor/assessment.md 졸업 산출물 기준에 「${n}」 없음`);
 }
 

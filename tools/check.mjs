@@ -78,9 +78,12 @@ function checkDomestic(domestic, sources) {
       if (!owner) { problems.push(`${id}: ${m[0]}의 법령명이 sources.md에 없음`); continue; }
       if (!sources.get(owner.name).has(m[0])) problems.push(`${id}: ${owner.name} ${m[0]}이 sources.md에서 확인되지 않음`);
     }
-    for (const m of line.matchAll(/[가-힣]+(?: [가-힣]+)*? 관한 법률|[가-힣]+법(?=[ ,(]|$)/g)) {
-      const s = m[0].split(" ").pop();
-      if (!names.some((n) => n.includes(m[0]) || n.includes(s))) problems.push(`${id}: 법령명 「${m[0]}」이 sources.md에 없음`);
+    // 괄호 설명을 지우고 쉼표·줄표로 나눈 조각에서 법령·기준명 후보를 뽑는다
+    const bare = line.replace(/\([^)]*\)/g, "");
+    for (const seg of bare.split(/,|—|·(?= )/)) {
+      const name = seg.split(/ 제\d/)[0].replace(/[「」]/g, "").trim();
+      if (!/(법률|[가-힣]{2,}법|시행령|심사지침|실시요령|안내서|가이드라인|고시)$/.test(name)) continue;
+      if (!names.some((n) => n === name || name.endsWith(" " + n) || n.startsWith(name + "("))) problems.push(`${id}: 법령·기준명 「${name}」이 sources.md에 없음`);
     }
   }
   return problems;
